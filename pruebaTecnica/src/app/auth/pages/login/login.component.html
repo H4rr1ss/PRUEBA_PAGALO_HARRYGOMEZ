@@ -1,1 +1,45 @@
-<p>login works!</p>
+<div class="bg-primary-400 w-full h-screen flex items-center justify-center">
+  <div class="relative w-[470px] bg-primary-200 rounded-2xl shadow-lg border-none py-4">
+    <!-- Logo/Header Image -->
+    <div
+      class="absolute w-[420px] h-[35px] -top-[18px] left-9 bg-[url('/assets/auth/logo.svg')] bg-no-repeat bg-cover"
+    ></div>
+
+    <div class="pt-16 px-6">
+      <!-- Form -->
+      <form
+        class="w-full max-w-md flex flex-col justify-center items-center p-6 sm:p-8 rounded-xl bg-primary-200 -mt-[58px] sm:-mt-[62px] z-0"
+        [formGroup]="loginForm"
+        (ngSubmit)="loginWithEmailAndPassword()"
+      >
+        <h1 class="text-center font-medium text-h4-medium mt-5 text-white">Inicio de sesión</h1>
+        <!-- INPUTS -->
+        <div class="w-full flex flex-col items-center gap-4 mt-6">
+          <div class="w-full flex flex-col">
+            <input type="email" id="email" formControlName="email" placeholder="Correo electrónico"
+              [ngClass]="{'border-red-600': isValidField('email'), 'border-secundary-200 border-opacity-50': !isValidField('email')}"
+              class=" p-3 rounded-lg bg-primary-200 text-white text-sm focus:outline-none border focus:border-japanese_dark-300 focus:ring-1 focus:ring-japanese_dark-300">
+            <span *ngIf="isValidField('email')" class="text-red-600 text-xs pl-2">
+              {{ getFieldError('email') }}
+            </span>
+          </div>
+          <div class="w-full flex flex-col">
+            <input type="password" id="password" formControlName="password" placeholder="Contraseña"
+              [ngClass]="{'border-red-600': isValidField('password'), 'border-secundary-200 border-opacity-50': !isValidField('password')}"
+              class="p-3 rounded-lg text-sm bg-primary-200 text-white focus:outline-none border focus:border-japanese_dark-300 focus:ring-1 focus:ring-japanese_dark-300">
+            <span *ngIf="isValidField('password')" class="text-red-600 text-xs pl-2">
+              {{ getFieldError('password') }}
+            </span>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full h-[52px] mt-8 bg-secundary-100 hover:bg-secundary-300 rounded-[10px] text-primary-400 font-semibold text-lg"
+        >
+          Iniciar Sesión
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
