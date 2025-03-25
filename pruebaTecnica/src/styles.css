@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input:-webkit-autofill {
+  background-color: #0D253F !important;
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  border-color: rgba(1, 180, 228, 0.5) !important;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  box-shadow: 0 0 0px 1000px #0D253F inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

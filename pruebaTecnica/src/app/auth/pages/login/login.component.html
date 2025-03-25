@@ -20,17 +20,17 @@
         <!-- INPUTS -->
         <div class="w-full flex flex-col items-center gap-4 mt-6">
           <div class="w-full flex flex-col">
-            <input type="email" id="email" formControlName="email" placeholder="Correo electrónico"
+            <input type="email" id="email" formControlName="email" placeholder="Correo electrónico" autocomplete="email"
               [ngClass]="{'border-red-600': isValidField('email'), 'border-secundary-200 border-opacity-50': !isValidField('email')}"
-              class=" p-3 rounded-lg bg-primary-200 text-white text-sm focus:outline-none border focus:border-japanese_dark-300 focus:ring-1 focus:ring-japanese_dark-300">
+              class=" p-3 rounded-lg bg-primary-200 text-white text-sm focus:outline-none border focus:border-primary-200 focus:ring-1 focus:ring-secundary-50">
             <span *ngIf="isValidField('email')" class="text-red-600 text-xs pl-2">
               {{ getFieldError('email') }}
             </span>
           </div>
           <div class="w-full flex flex-col">
-            <input type="password" id="password" formControlName="password" placeholder="Contraseña"
+            <input type="password" id="password" formControlName="password" placeholder="Contraseña" autocomplete="new-password"
               [ngClass]="{'border-red-600': isValidField('password'), 'border-secundary-200 border-opacity-50': !isValidField('password')}"
-              class="p-3 rounded-lg text-sm bg-primary-200 text-white focus:outline-none border focus:border-japanese_dark-300 focus:ring-1 focus:ring-japanese_dark-300">
+              class="p-3 rounded-lg text-sm bg-primary-200 text-white focus:outline-none border focus:border-primary-200 focus:ring-1 focus:ring-secundary-50">
             <span *ngIf="isValidField('password')" class="text-red-600 text-xs pl-2">
               {{ getFieldError('password') }}
             </span>
