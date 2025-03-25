@@ -1,1 +1,79 @@
-<p>popular works!</p>
+<main class="bg-primary-400 flex flex-row justify-center w-full">
+  <div class="bg-primary-400 w-full max-w-[1440px] relative">
+    <!-- Hero Section -->
+    <header class="w-full h-[671px] relative bg-cover">
+      <div
+        class="absolute inset-0 bg-[url('https://image.tmdb.org/t/p/original/tyfO9jHgkhypUFizRVYD0bytPjP.jpg')] bg-cover opacity-55 clip-custom">
+      </div>
+
+      <!-- Navigation Bar -->
+      <app-navbar></app-navbar>
+
+      <!-- Hero Content -->
+      <div class="px-[122px] pt-[177px] relative z-10">
+        <h1 class="text-h1-bold font-bold text-white">
+          Snow White
+        </h1>
+        <p class="w-[474px] mt-[39px] text-h6-medium font-medium text-white">
+          Princess Snow White flees the castle when the Evil Queen, in her jealousy over Snow White's inner beauty, tries to kill her. Deep into the dark woods, she stumbles upon seven magical dwarves and a young thief named Jonathan. Together, they strive to survive the Queen's relentless pursuit and aspire to take back the kingdom in the process...
+        </p>
+      </div>
+    </header>
+
+    <!-- Movie Tabs and Search Section -->
+    <section class="px-[122px] pt-[32px] relative">
+      <div class="flex items-center justify-between">
+        <div class="flex space-x-[62px]">
+          <app-tab-button
+            tabName="cartelera"
+            [selectedTab]="selectedTab"
+            (tabSelected)="setTab($event)">
+          </app-tab-button>
+          <app-tab-button
+            tabName="populares"
+            [selectedTab]="selectedTab"
+            (tabSelected)="setTab($event)">
+          </app-tab-button>
+        </div>
+
+        <div class="flex gap-2">
+          <div class="relative">
+            <input
+              [(ngModel)]="searchQuery"
+              class="w-[363px] h-[43px] bg-primary-300 rounded-[5px] text-primary-50 text-paragraph-medium font-medium pl-[19px] pr-[45px] outline-none"
+              placeholder="Buscar por nombre de pelicula"
+            />
+            <img src="/assets/popular/Search.svg" class="w-7 h-7 absolute top-2 right-3 cursor-pointer" alt="Search" />
+          </div>
+
+          <button class="w-[108px] h-[42px] bg-secundary-400 rounded-[2.5px] flex items-center justify-center gap-2">
+            <img src="/assets/popular/Filter.svg" class="w-6 h-6" alt="Filter" />
+            <span class="text-paragraph-medium font-medium text-secundary-50">
+              Filtrar
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Tab Indicator -->
+      <div
+        class="w-[100px] h-[5px] mt-[30px] bg-primary-50 ml-2"
+        [style.marginLeft]="selectedTab === 'cartelera' ? '0' : '162px'">
+      </div>
+    </section>
+
+    <!-- Si selectedTab es 'cartelera', muestra las películas en cartelera -->
+    <section *ngIf="selectedTab === 'cartelera'" class="px-[122px] pt-[60px] pb-[122px]">
+      <div class="grid grid-cols-4 gap-x-[69px] gap-y-[35px]">
+        <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+      </div>
+    </section>
+
+    <!-- Si selectedTab NO es 'cartelera', muestra las películas populares -->
+    <section *ngIf="selectedTab !== 'cartelera'" class="px-[122px] pt-[60px] pb-[122px]">
+      <div class="grid grid-cols-4 gap-x-[69px] gap-y-[35px]">
+        <app-movie-card *ngFor="let movie of movies_popular" [movie]="movie"></app-movie-card>
+      </div>
+    </section>
+  </div>
+</main>
