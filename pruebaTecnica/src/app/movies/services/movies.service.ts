@@ -18,6 +18,13 @@ export class MoviesService {
     );
   }
 
+  getMovieById(movieId: number): Observable<Movie> {
+    const params = {
+      language: 'es-ES',
+    };
+    return this.http.get<Movie>(`${this.apiUrl}/movie/${movieId}`, { params });
+  }
+
   getMovies(page: number): Observable<Movie[]> {
     const params = {
       language: 'es-ES',
@@ -50,6 +57,24 @@ export class MoviesService {
           vote_average: movie.vote_average,
         }));
       })
+    );
+  }
+
+  // Método para obtener películas recomendadas
+  getRecommendedMovies(movieId: number): Observable<any> {
+    const url = `${this.apiUrl}/movie/${movieId}/recommendations`;
+    const params = {
+      language: 'es-ES',
+      page: '1',
+    };
+
+    return this.http.get<{ results: any[] }>(url, { params }).pipe(
+      map(response => response.results.slice(0, 4).map(movie => ({
+        id: movie.id,
+        title: movie.title,
+        poster_path: movie.poster_path ? `${environment.sizePoster}${movie.poster_path}` : '',
+        vote_average: movie.vote_average
+      })))
     );
   }
 }

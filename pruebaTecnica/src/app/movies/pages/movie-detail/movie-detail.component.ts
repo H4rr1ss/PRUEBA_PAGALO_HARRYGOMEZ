@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Movie } from 'src/app/core/models/movie.interface';
+import { MoviesService } from '../../services/movies.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-detail',
@@ -8,15 +10,31 @@ import { Movie } from 'src/app/core/models/movie.interface';
   ]
 })
 export class MovieDetailComponent {
+  recommendedMovies: Movie[] = [];
+  movie: Movie | undefined;
 
-  movieData:Movie = {
-    id: 1112,
-    title: 'Snow White',
-    poster_path: '',
-    vote_average: 5.0,
-    overview:
-      "Princess Snow White flees the castle when the Evil Queen, in her jealousy over Snow White's inner beauty, tries to kill her. Deep into the dark woods, she stumbles upon seven magical dwarves and a young thief named Jonathan. Together, they strive to survive the Queen's relentless pursuit and aspire to take back the kingdom in the process...",
-  };
+  constructor(
+    private moviesService: MoviesService,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit(): void {
+    const movieId = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.moviesService.getMovieById(movieId).subscribe(
+      (movie: Movie) => {
+        this.movie = movie;
+      },
+      error => {
+        console.error('Error al obtener los detalles de la película', error);
+      }
+    );
+
+    this.moviesService.getRecommendedMovies(movieId).subscribe(
+      movies => this.recommendedMovies = movies,
+      error => console.error('Error al cargar recomendaciones', error)
+    );
+  }
 
   actors = [
     {
