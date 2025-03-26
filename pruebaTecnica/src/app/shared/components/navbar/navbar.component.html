@@ -1,6 +1,9 @@
-<nav class="absolute top-0 left-0 w-full h-[85px] flex items-center justify-between px-[52px] py-[11px]">
-  <div class="relative w-[208px] h-[30px] bg-[url('/assets/logo.svg')] bg-contain bg-no-repeat"></div>
-  <button class="h-8 px-5 py-0 bg-secundary-200 rounded-[10px] text-white text-sm font-medium">
+<nav class="absolute top-0 left-0 w-full h-[85px] flex items-center justify-between px-[52px] py-[11px] z-20">
+  <a [routerLink]="'/peliculas'">
+    <div class="relative w-[208px] h-[30px] bg-[url('/assets/logo.svg')] bg-contain bg-no-repeat cursor-pointer"></div>
+  </a>
+
+  <button class="h-8 px-5 py-0 bg-secundary-200 rounded-[10px] hover:bg-secundary-400 text-white text-sm font-medium">
     Iniciar sesión
   </button>
 </nav>
