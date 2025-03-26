@@ -15,7 +15,7 @@ aplicación debe cumplir con los siguientes requisitos:
 - Buenas practicas de programación
 
 ## Credenciales de usuario prueba  
-Usuario utilizado para la validacion de rutas y validación de inputs en el login.  
+Usuario utilizado para la `validacion de rutas` y validación de inputs en el login.  
 ```
 correo: usuario@ejemplo.com
 contraseña: 123456

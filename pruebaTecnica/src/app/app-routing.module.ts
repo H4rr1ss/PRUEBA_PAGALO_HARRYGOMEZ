@@ -11,7 +11,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'peliculas', component: PopularComponent},
   {path: 'pelicula/:id', component: MovieDetailComponent, canActivate: [MoviesGuard]},
-  {path: 'pelicula/:id/:movieName/elenco', component: MovieCastComponent, canActivate: [MoviesGuard]}
+  {path: 'pelicula/:id/:movieName/elenco', component: MovieCastComponent, canActivate: [MoviesGuard]},
+  { path: '**', redirectTo: 'peliculas', pathMatch: 'full' }
 ];
 
 @NgModule({
