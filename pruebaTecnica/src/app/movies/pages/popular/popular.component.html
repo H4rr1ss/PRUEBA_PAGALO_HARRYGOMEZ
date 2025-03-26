@@ -42,9 +42,12 @@
     </section>
 
     <section class="px-[122px] pt-[60px] pb-[122px] min-h-screen">
-
       <div class="grid grid-cols-4 gap-x-[69px] gap-y-[35px]">
-        <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+        <app-movie-card
+          *ngFor="let movie of movies"
+          [movie]="movie"
+        >
+        </app-movie-card>
       </div>
 
       <!-- Loader de paginación, muestra cuando isLoading es true -->

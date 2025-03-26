@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Movie } from 'src/app/core/models/movie.interface';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthorService } from '../../services/author.service';
+import { Actor } from 'src/app/core/models/author.interface';
 
 @Component({
   selector: 'app-movie-detail',
@@ -12,9 +14,11 @@ import { ActivatedRoute } from '@angular/router';
 export class MovieDetailComponent {
   recommendedMovies: Movie[] = [];
   movie: Movie | undefined;
+  actors: Actor[] = [];
 
   constructor(
     private moviesService: MoviesService,
+    private authorService: AuthorService,
     private route: ActivatedRoute
   ) { }
 
@@ -37,29 +41,10 @@ export class MovieDetailComponent {
       movies => this.recommendedMovies = movies,
       error => console.error('Error al cargar recomendaciones', error)
     );
+
+    this.authorService.getMovieCredits(movieId).subscribe(
+      actors => this.actors = actors,
+      error => console.error('Error al cargar los actores', error)
+    );
   }
-
-  actors = [
-    {
-      name: 'Rachel Zegler',
-      role: 'Snow White',
-      image: 'https://image.tmdb.org/t/p/w300/2v9FVVBUrrkW2m3QOcYkuhq9A6o.jpg'
-    },
-    {
-      name: 'Rachel Zegler',
-      role: 'Snow White',
-      image: 'https://image.tmdb.org/t/p/w300/2v9FVVBUrrkW2m3QOcYkuhq9A6o.jpg'
-    },
-    {
-      name: 'Rachel Zegler',
-      role: 'Snow White',
-      image: 'https://image.tmdb.org/t/p/w300/2v9FVVBUrrkW2m3QOcYkuhq9A6o.jpg'
-    },
-    {
-      name: 'Rachel Zegler',
-      role: 'Snow White',
-      image: 'https://image.tmdb.org/t/p/w300/2v9FVVBUrrkW2m3QOcYkuhq9A6o.jpg'
-    },
-  ];
-
 ;}
