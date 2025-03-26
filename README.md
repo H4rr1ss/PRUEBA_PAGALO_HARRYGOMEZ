@@ -14,6 +14,13 @@ aplicación debe cumplir con los siguientes requisitos:
 - Diseño y desarrollo de interfaces de usuario
 - Buenas practicas de programación
 
+## Credenciales de usuario prueba  
+Usuario utilizado para la validacion de rutas y validación de inputs en el login.  
+```
+correo: usuario@ejemplo.com
+contraseña: 123456
+```
+
 # Documentación del proyecto
 
 ## Diseño de Interfaces  
