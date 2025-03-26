@@ -1,5 +1,5 @@
-<div class="w-[246px] h-[378px] relative group cursor-pointer">
-  <div class="relative w-[246px] h-[328px]">
+<div class="w-full sm:w-[246px] h-auto relative group cursor-pointer">
+  <div class="relative w-full h-auto aspect-[2/3]">
     <div
       class="absolute w-full h-full bg-cover bg-center rounded-lg"
       [style.backgroundImage]="'url(' + movie.image + ')'"
@@ -7,27 +7,26 @@
       <!-- Contenedor con el degradado y las estrellas -->
       <div class="absolute inset-0 opacity-0 rounded-md group-hover:opacity-100 bg-gradient-to-t from-black to-transparent transition-opacity duration-300">
         <!-- Contenedor de estrellas que solo se muestra al hacer hover -->
-        <div class="absolute bottom-[14px] left-1/2 transform -translate-x-1/2 flex justify-center w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <img
             *ngFor="let star of stars; let i = index"
-            class="w-[23px] h-[21px] mx-[5px] rounded-lg"
+            class="w-6 h-[20px] mx-[2px] sm:mx-[5px] rounded-lg"
             [src]="i < roundedRating ? '/assets/movie-card/StarYellow.svg' : '/assets/movie-card/StarGray.svg'"
             alt="Star"
           />
         </div>
       </div>
-
     </div>
     <ng-template #regularCard>
       <img
-        class="absolute w-full h-full object-cover"
+        class="absolute w-full h-full object-cover rounded-lg"
         [src]="movie.image"
         [alt]="movie.title"
       />
     </ng-template>
   </div>
   <div class="w-full mt-2 text-center">
-    <h3 class="text-paragraph-s-bold font-bold text-white">
+    <h3 class="text-paragraph-s-bold font-bold text-white text-sm sm:text-base">
       {{ movie.title }}
     </h3>
   </div>

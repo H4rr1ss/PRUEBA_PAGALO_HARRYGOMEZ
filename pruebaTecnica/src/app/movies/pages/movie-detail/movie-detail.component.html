@@ -1,69 +1,81 @@
-<div class="bg-primary-400 flex flex-col items-center w-full">
-  <div class="w-full max-w-[1440px]">
+<div class="bg-primary-400 flex flex-col items-center w-full min-h-screen">
+
     <!-- Navigation Bar -->
     <app-navbar></app-navbar>
 
     <!-- Main content -->
-    <main class="px-[122px] pt-[131px]">
+    <main class="px-4 sm:px-6 md:px-8 lg:px-[122px] pt-6 sm:pt-8 md:pt-12 lg:pt-[131px]">
       <!-- Movie content section -->
-      <div class="flex gap-20 h-[654px]">
-
+      <div class="flex flex-col lg:flex-row lg:gap-20">
         <!-- Movie poster -->
-        <div class="w-full h-full flex flex-col justify-center">
-
-          <div class="h-[553px] bg-[url(https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg)] bg-cover bg-center rounded-sm"></div>
+        <div class="w-full sm:w-[80%] md:w-[70%] lg:w-[410px] mx-auto lg:mx-0 mb-6 sm:mb-8 lg:mb-0">
+          <div class="aspect-[2/3] w-full bg-[url(https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg)] bg-cover bg-center rounded-sm"></div>
 
           <!-- Rating section -->
-          <div class="flex gap-5 mt-4 items-center justify-center">
-            <span class="text-white text-h6-medium">PUNTUAR</span>
-            <div class="flex gap-1">
-              <img *ngFor="let star of [1, 2, 3, 4, 5]" class="w-[21px] h-[21px]" alt="Star" src="/assets/movie-card/StarGray.svg">
+          <div class="flex gap-2 sm:gap-3 md:gap-5 mt-4 items-center justify-center">
+            <span class="text-white text-paragraph-medium sm:text-h6-s-medium md:text-h6-medium">PUNTUAR</span>
+            <div class="flex gap-1 sm:gap-2">
+              <img
+                *ngFor="let star of [1, 2, 3, 4, 5]"
+                class="w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-[21px] md:h-[21px]"
+                alt="Star"
+                src="/assets/movie-card/StarGray.svg"
+              >
             </div>
           </div>
         </div>
 
         <!-- Movie details -->
-        <div class="flex flex-col gap-8 items-center">
-          <div class="flex flex-row justify-between w-full">
-            <h1 class="text-white font-bold text-h1-bold">{{ movieData.title }}</h1>
-            <div class="flex items-center gap-2">
-              <span class="text-white text-h1-s-regular">{{ movieData.rating }}</span>
-              <img class="w-10 h-[43px]" alt="Star" src="/assets/movie-card/StarYellow.svg">
+        <div class="flex flex-col gap-4 sm:gap-6 md:gap-8 flex-1">
+          <div class="flex flex-col sm:flex-row justify-between w-full gap-3 sm:gap-4 md:gap-6">
+            <h1 class="text-white font-bold text-h3-s-bold sm:text-h2-s-bold md:text-h1-bold">{{ movieData.title }}</h1>
+            <div class="flex items-center gap-2 sm:gap-3">
+              <span class="text-white text-h3-s-regular sm:text-h2-s-regular md:text-h1-s-regular">{{ movieData.rating }}</span>
+              <img
+                class="w-6 h-[26px] sm:w-8 sm:h-[35px] md:w-10 md:h-[43px]"
+                alt="Star"
+                src="/assets/movie-card/StarYellow.svg"
+              >
             </div>
           </div>
 
           <!-- Description -->
-          <p class="text-white text-h6-regular max-w-[685px]">{{ movieData.description }}</p>
+          <p class="text-white text-paragraph-s-regular sm:text-paragraph-regular md:text-h6-regular max-w-[685px]">
+            {{ movieData.description }}
+          </p>
 
           <!-- Actors section -->
-          <div>
-            <h2 class="text-white text-h6-regular mb-4">Actores</h2>
-            <div class="flex justify-between gap-5">
-              <div *ngFor="let actor of actors" class="w-[155px]">
-                <app-actor-card
-                  [actor]="actor">
-                </app-actor-card>
+          <div class="mt-2 sm:mt-4">
+            <h2 class="text-white text-paragraph-medium sm:text-h6-s-regular md:text-h6-regular mb-3 sm:mb-4">
+              Actores
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
+              <div *ngFor="let actor of actors" class="w-full">
+                <app-actor-card [actor]="actor"></app-actor-card>
               </div>
             </div>
           </div>
 
           <!-- Cast and production team button -->
-          <button
-            class="w-fit h-8 px-5 py-0 rounded-[10px] border border-secundary-200 text-secundary-200 text-sm hover:border-secundary-400 hover:text-secundary-400"
-          >
+          <button class="w-fit h-8 px-3 sm:px-4 md:px-5 py-0 rounded-[10px] border border-secundary-200 text-secundary-200 text-paragraph-s-regular sm:text-sm hover:border-secundary-400 hover:text-secundary-400 transition-colors duration-200">
             Reparto y equipo de producción
           </button>
         </div>
       </div>
 
       <!-- Related movies section -->
-      <div class="my-10">
-        <h2 class="text-white text-h6-regular mb-4">Películas relacionadas</h2>
-        <div class="grid grid-cols-4 gap-x-[69px] gap-y-[35px]">
-          <app-movie-card *ngFor="let movie of relatedMovies" [movie]="movie">
+      <div class="my-6 sm:my-8 md:my-10">
+        <h2 class="text-white text-paragraph-medium sm:text-h6-s-regular md:text-h6-regular mb-3 sm:mb-4">
+          Películas relacionadas
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-x-[69px] md:gap-y-[35px]">
+          <app-movie-card
+            *ngFor="let movie of relatedMovies"
+            [movie]="movie"
+            class="w-full"
+          >
           </app-movie-card>
         </div>
       </div>
     </main>
-  </div>
 </div>
