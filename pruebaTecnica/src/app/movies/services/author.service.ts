@@ -23,7 +23,7 @@ export class AuthorService {
         id: actor.id,
         name: actor.name,
         character: actor.character,
-        profile_path: actor.profile_path ? `${environment.sizePoster}${actor.profile_path}` : '',
+        profile_path: actor.profile_path ? `${environment.sizePoster}${actor.profile_path}` : '/assets/icons/avatar.webp',
       })))
     );
   }
