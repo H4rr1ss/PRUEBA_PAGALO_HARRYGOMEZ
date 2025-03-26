@@ -26,7 +26,7 @@ El interceptor se inyecta globalmente en la aplicación.
 ```typescript
 @Injectable()
 export class InterceptorInterceptor implements HttpInterceptor {
-  private apiKey = 'TU_API_KEY_AQUI';
+  private apiKey = 'API_KEY';
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Clona la solicitud y agrega la cabecera de autorización
