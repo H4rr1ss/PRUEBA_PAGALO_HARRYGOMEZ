@@ -1,48 +1,70 @@
-<div class="bg-primary-400 w-full h-screen flex items-center justify-center">
-  <nav class="absolute top-0 left-0 w-full h-[85px] flex items-center justify-between px-[52px] py-[11px] cursor-pointer">
+<div class="bg-primary-400 w-full min-h-screen flex items-center justify-center p-4">
+  <!-- Responsive Navigation -->
+  <nav class="absolute top-0 left-0 w-full h-[60px] md:h-[85px] flex items-center justify-between px-4 md:px-[52px] py-[11px] cursor-pointer">
     <div
-      class="relative w-[208px] h-[30px] bg-[url('/assets/logo.svg')] bg-contain bg-no-repeat"
+      class="relative w-[150px] md:w-[208px] h-[30px] bg-[url('/assets/logo.svg')] bg-contain bg-no-repeat"
       [routerLink]="'/peliculas'"
     ></div>
   </nav>
 
-  <div class="relative w-[470px] bg-primary-200 rounded-2xl shadow-lg border-none py-4">
-    <!-- Logo/Header Image -->
+  <!-- Main Container - Responsive width -->
+  <div class="relative w-full max-w-[320px] sm:max-w-[400px] md:max-w-[470px] bg-primary-200 rounded-2xl shadow-lg border-none py-4 mt-16 md:mt-0">
+    <!-- Logo Header - Responsive width and positioning -->
     <div
-      class="absolute w-[420px] h-[35px] -top-[18px] left-9 bg-[url('/assets/auth/logo.svg')] bg-no-repeat bg-cover"
+      class="absolute w-[280px] sm:w-[350px] md:w-[420px] h-[35px] -top-[18px] left-1/2 transform -translate-x-1/2 bg-[url('/assets/auth/logo.svg')] bg-no-repeat bg-cover"
     ></div>
 
-    <div class="pt-16 px-6">
-      <!-- Form -->
+    <!-- Form Container -->
+    <div class="pt-16 px-4 md:px-6">
       <form
-        class="w-full max-w-md flex flex-col justify-center items-center p-6 sm:p-8 rounded-xl bg-primary-200 -mt-[58px] sm:-mt-[62px] z-0"
+        class="w-full flex flex-col justify-center items-center p-4 sm:p-6 md:p-8 rounded-xl bg-primary-200 -mt-[58px] sm:-mt-[62px] z-0"
         [formGroup]="loginForm"
         (ngSubmit)="loginWithEmailAndPassword()"
       >
-        <h1 class="text-center font-medium text-h4-medium mt-5 text-white">Inicio de sesión</h1>
-        <!-- INPUTS -->
+        <!-- Title - Responsive text size -->
+        <h1 class="text-center font-medium text-xl md:text-h4-medium mt-5 text-white">
+          Inicio de sesión
+        </h1>
+
+        <!-- Inputs Container -->
         <div class="w-full flex flex-col items-center gap-4 mt-6">
+          <!-- Email Input -->
           <div class="w-full flex flex-col">
-            <input type="email" id="email" formControlName="email" placeholder="Correo electrónico" autocomplete="email"
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              placeholder="Correo electrónico"
+              autocomplete="email"
               [ngClass]="{'border-red-600': isValidField('email'), 'border-secundary-200 border-opacity-50': !isValidField('email')}"
-              class=" p-3 rounded-lg bg-primary-200 text-white text-sm focus:outline-none border focus:border-primary-200 focus:ring-1 focus:ring-secundary-50">
+              class="w-full p-3 rounded-lg bg-primary-200 text-white text-sm focus:outline-none border focus:border-primary-200 focus:ring-1 focus:ring-secundary-50"
+            >
             <span *ngIf="isValidField('email')" class="text-red-600 text-xs pl-2">
               {{ getFieldError('email') }}
             </span>
           </div>
+
+          <!-- Password Input -->
           <div class="w-full flex flex-col">
-            <input type="password" id="password" formControlName="password" placeholder="Contraseña" autocomplete="new-password"
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              placeholder="Contraseña"
+              autocomplete="new-password"
               [ngClass]="{'border-red-600': isValidField('password'), 'border-secundary-200 border-opacity-50': !isValidField('password')}"
-              class="p-3 rounded-lg text-sm bg-primary-200 text-white focus:outline-none border focus:border-primary-200 focus:ring-1 focus:ring-secundary-50">
+              class="w-full p-3 rounded-lg text-sm bg-primary-200 text-white focus:outline-none border focus:border-primary-200 focus:ring-1 focus:ring-secundary-50"
+            >
             <span *ngIf="isValidField('password')" class="text-red-600 text-xs pl-2">
               {{ getFieldError('password') }}
             </span>
           </div>
         </div>
 
+        <!-- Submit Button - Responsive height and text size -->
         <button
           type="submit"
-          class="w-full h-[52px] mt-8 bg-secundary-100 hover:bg-secundary-300 rounded-[10px] text-primary-400 font-semibold text-lg"
+          class="w-full h-[45px] md:h-[52px] mt-8 bg-secundary-100 hover:bg-secundary-300 rounded-[10px] text-primary-400 font-semibold text-base md:text-lg"
         >
           Iniciar Sesión
         </button>

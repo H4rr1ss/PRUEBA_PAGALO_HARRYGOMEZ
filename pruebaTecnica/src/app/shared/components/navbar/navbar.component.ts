@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,22 +9,26 @@ import { Router } from '@angular/router';
   ]
 })
 export class NavbarComponent {
-  isLoggedIn = true;// Simulación de estado logueado
+  isLoggedIn = false;
   showMenu = false;
   mobileMenuOpen = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
+
+  ngOnInit() {
+    this.isLoggedIn = this.authService.isLoggedIn();
+  }
 
   login() {
-    this.router.navigate(['/auth']);
-    console.log("Redirigiendo a login...");
+    this.router.navigate(['/login']);
   }
 
   logout() {
+    this.authService.logout();
     this.isLoggedIn = false;
     this.showMenu = false;
     this.mobileMenuOpen = false;
-    console.log("Sesión cerrada.");
+    this.router.navigate(['/login']);
   }
 
   toggleMenu() {

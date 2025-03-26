@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,11 @@ export class LoginComponent {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -22,6 +28,11 @@ export class LoginComponent {
     if (this.loginForm.invalid) return;
 
     const { email, password } = this.loginForm.value;
+    if (this.authService.login(email, password)) {
+      this.router.navigate(['/peliculas']); // Redirige a una película de ejemplo
+    } else {
+      alert('Credenciales incorrectas');
+    }
   }
 
   isValidField(field: string): boolean {
