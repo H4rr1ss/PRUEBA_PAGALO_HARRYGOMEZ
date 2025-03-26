@@ -6,10 +6,6 @@ import { Movie } from 'src/app/core/models/movie.interface';
   selector: 'app-popular',
   templateUrl: './popular.component.html',
   styles: [`
-    .clip-custom {
-      clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
-    }
-
     .loader {
       border: 4px solid #f3f3f3;
       border-top: 4px solid #3498db;
@@ -36,6 +32,10 @@ export class PopularComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMovies();
+  }
+
+  loadMovie() {
+
   }
 
   loadMovies(): void {

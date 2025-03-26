@@ -14,7 +14,7 @@ export class MovieDetailComponent {
     title: 'Snow White',
     poster_path: '',
     vote_average: 5.0,
-    description:
+    overview:
       "Princess Snow White flees the castle when the Evil Queen, in her jealousy over Snow White's inner beauty, tries to kill her. Deep into the dark woods, she stumbles upon seven magical dwarves and a young thief named Jonathan. Together, they strive to survive the Queen's relentless pursuit and aspire to take back the kingdom in the process...",
   };
 
