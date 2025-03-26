@@ -13,6 +13,8 @@ import { Actor } from 'src/app/core/models/author.interface';
 })
 export class MovieDetailComponent {
   recommendedMovies: Movie[] = [];
+  selectedStars: number = 0;
+  hoveredStar: number = 0;
   movie: Movie | undefined;
   actors: Actor[] = [];
 
@@ -29,6 +31,12 @@ export class MovieDetailComponent {
 
       this.loadMovieDetails(movieId);
     });
+  }
+
+  // Función para manejar el clic en las estrellas
+  onStarClick(star: number): void {
+    this.selectedStars = star;
+    console.log('Estrellas seleccionadas:', this.selectedStars);
   }
 
   private loadMovieDetails(movieId: number): void {

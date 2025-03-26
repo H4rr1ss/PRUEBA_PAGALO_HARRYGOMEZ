@@ -20,9 +20,13 @@
             <div class="flex gap-1 sm:gap-2">
               <img
                 *ngFor="let star of [1, 2, 3, 4, 5]"
-                class="w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-[21px] md:h-[21px]"
+                class="w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-[21px] md:h-[21px] cursor-pointer"
                 alt="Star"
-                src="/assets/movie-card/StarGray.svg"
+                [src]="star <= (hoveredStar || selectedStars) ? '/assets/movie-card/StarYellow.svg' : '/assets/movie-card/StarGray.svg'"
+                (click)="selectedStars = star"
+                (mouseenter)="hoveredStar = star"
+                (mouseleave)="hoveredStar = 0"
+                (click)="onStarClick(star)"
               >
             </div>
           </div>
