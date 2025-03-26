@@ -2,7 +2,7 @@
   <div class="relative w-full h-auto aspect-[2/3]">
     <div
       class="absolute w-full h-full bg-cover bg-center rounded-lg"
-      [style.backgroundImage]="'url(' + movie.image + ')'"
+      [style.backgroundImage]="'url(' + movie.poster_path + ')'"
     >
       <!-- Contenedor con el degradado y las estrellas -->
       <div class="absolute inset-0 opacity-0 rounded-md group-hover:opacity-100 bg-gradient-to-t from-black to-transparent transition-opacity duration-300">
@@ -20,7 +20,7 @@
     <ng-template #regularCard>
       <img
         class="absolute w-full h-full object-cover rounded-lg"
-        [src]="movie.image"
+        [src]="movie.poster_path"
         [alt]="movie.title"
       />
     </ng-template>

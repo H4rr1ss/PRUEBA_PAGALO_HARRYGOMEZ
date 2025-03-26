@@ -11,7 +11,7 @@ export class TabButtonComponent {
   @Input() selectedTab: string = '';
   @Output() tabSelected = new EventEmitter<string>();
 
-  selectTab() {
+  onClick() {
     this.tabSelected.emit(this.tabName);
   }
 }

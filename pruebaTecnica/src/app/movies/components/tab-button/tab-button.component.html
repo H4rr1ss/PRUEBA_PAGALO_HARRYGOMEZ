@@ -1,7 +1,7 @@
 <button
   [class.text-white]="selectedTab === tabName"
   [class.text-gray-400]="selectedTab !== tabName"
-  (click)="selectTab()"
+  (click)="onClick()"
   class="text-h5-regular font-regular"
 >
   {{ tabName | titlecase }}

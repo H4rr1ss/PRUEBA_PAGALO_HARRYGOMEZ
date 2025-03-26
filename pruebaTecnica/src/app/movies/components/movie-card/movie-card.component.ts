@@ -1,12 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Movie } from 'src/app/core/models/movie.interface';
 
-interface Movie {
-  id: number;
-  title: string;
-  image: string;
-  rating: number;
-  description?: string;
-}
 
 @Component({
   selector: 'app-movie-card',
@@ -19,6 +13,6 @@ export class MovieCardComponent{
   stars: number[] = [0, 1, 2, 3, 4]
 
   get roundedRating(): number {
-    return Math.round(this.movie.rating / 2);
+    return Math.round(this.movie.vote_average / 2);
   }
 }
