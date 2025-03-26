@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Movie } from 'src/app/core/models/movie.interface';
 import { map, Observable } from 'rxjs';
 
@@ -13,7 +13,8 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   getPopularMovie(): Observable<Movie> {
-    return this.http.get<{ results: Movie[] }>(`${this.apiUrl}/movie/popular?language=es-ES&page=1`).pipe(
+    const url = `${this.apiUrl}/movie/popular?language=es-ES&page=1`;
+    return this.http.get<{ results: Movie[] }>(url).pipe(
       map(response => response.results[0])
     );
   }
@@ -26,11 +27,13 @@ export class MoviesService {
   }
 
   getMovies(page: number): Observable<Movie[]> {
+    const url = `${this.apiUrl}/movie/now_playing`;
     const params = {
       language: 'es-ES',
       page: page.toString(),
     };
-    return this.http.get<any>(`${this.apiUrl}/movie/now_playing`, { params }).pipe(
+
+    return this.http.get<any>(url, { params }).pipe(
       map((response) => {
         return response.results.map((movie: Movie) => ({
           id: movie.id,
@@ -43,12 +46,13 @@ export class MoviesService {
   }
 
   getTopRatedMovies(page: number): Observable<Movie[]> {
+    const url = `${this.apiUrl}/movie/top_rated`;
     const params = {
       language: 'es-ES',
       page: page.toString(),
     };
 
-    return this.http.get<any>(`${this.apiUrl}/movie/top_rated`, { params }).pipe(
+    return this.http.get<any>(url, { params }).pipe(
       map((response) => {
         return response.results.map((movie: Movie) => ({
           id: movie.id,
