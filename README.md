@@ -14,19 +14,18 @@ aplicación debe cumplir con los siguientes requisitos:
 - Diseño y desarrollo de interfaces de usuario
 - Buenas practicas de programación
 
-## Frameworks o librerias utilizadas
-- Angular 14: Framework principal para el desarrollo del frontend.
-- Tailwind CSS: Para el diseño y estilización del proyecto.
-- RxJS: Para manejo de programación reactiva en Angular.
-
-<br>
-
 # Documentación del proyecto
 
 ## Diseño de Interfaces  
 **Mockups** del proyecto en Figma aquí:  
 [Ver Mockups en Figma](https://www.figma.com/design/8QA6qE49iSGBvIvyXssSSI/PruebaTecnica-Pagalo?node-id=0-1&t=e7DMhNK8cvroyHb0-1)
 
+
+## Documentacion técnica  
+Acá se encuentra código relevante que debe ser explicado:  
+* [Consumo API](./docs/apiMovies.md)  
+* [Guardianes](./docs/guard.md)  
+* [Interceptores](./docs/interceptor.md)  
 
 
 ## Creación del Proyecto  
@@ -54,3 +53,18 @@ Para iniciar el servidor local y ver el proyecto en el navegador, usa:
 ```sh
 npx ng serve
 ```
+
+## Ejecución del Servidor de Desarrollo  
+Para iniciar el servidor local y ver el proyecto en el navegador, usa:  
+
+```sh
+npx ng serve
+```
+
+## Funciones del usuario
+![Diagrama](./docs/diagramaUsuario.webp)
+
+## Frameworks o librerias utilizadas
+- Angular 14: Framework principal para el desarrollo del frontend.
+- Tailwind CSS: Para el diseño y estilización del proyecto.
+- RxJS: Para manejo de programación reactiva en Angular.
