@@ -9,21 +9,12 @@ aplicación debe cumplir con los siguientes requisitos:
 
 ## Requisitos
 
-### Servicios en la nube
-- El proyecto se desplegará en AWS EC2 utilizando *Docker* para la creación de contenedores.
-- mongo atlas para almacenar los logs y google cloud para almacenar la base de datos del programa.
+- Desarrollo de aplicaciones web con Angular
+- Consumo de API´s RESTful
+- Diseño y desarrollo de interfaces de usuario
+- Buenas practicas de programación
 
-### Funcionalidades principales
-1. *Mostrar una página con las películas que actualmente están en cartelera enlos cines*
-2. *Mostrar una página con las películas más populares (top rated) según supuntuación*
-3. *Mostrar una página con el detalle de cada película*
-
-## Herramientas utilizadas
-
-- Figma: Para la realización de mockups.
-- TheMovieDB: Para consumir su API.
-
-## Frameworks o librerias utilizadas en typescript
+## Frameworks o librerias utilizadas
 - Angular 14: Framework principal para el desarrollo del frontend.
 - Tailwind CSS: Para el diseño y estilización del proyecto.
 - RxJS: Para manejo de programación reactiva en Angular.
