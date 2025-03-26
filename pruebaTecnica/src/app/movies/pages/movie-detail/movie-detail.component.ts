@@ -19,15 +19,18 @@ export class MovieDetailComponent {
   ) { }
 
   ngOnInit(): void {
-    const movieId = Number(this.route.snapshot.paramMap.get('id'));
+    this.route.paramMap.subscribe(params => {
+      const movieId = Number(params.get('id'));
+      if (!movieId) return;
 
+      this.loadMovieDetails(movieId);
+    });
+  }
+
+  private loadMovieDetails(movieId: number): void {
     this.moviesService.getMovieById(movieId).subscribe(
-      (movie: Movie) => {
-        this.movie = movie;
-      },
-      error => {
-        console.error('Error al obtener los detalles de la película', error);
-      }
+      (movie: Movie) => this.movie = movie,
+      error => console.error('Error al obtener los detalles de la película', error)
     );
 
     this.moviesService.getRecommendedMovies(movieId).subscribe(
@@ -59,29 +62,4 @@ export class MovieDetailComponent {
     },
   ];
 
-  relatedMovies = [
-    {
-      id: 22,
-      title: '1Captain America: Brave New World',
-      poster_path: 'https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg',
-      vote_average: 6.1
-    },
-    {
-      id: 99,
-      title: '2Captain America: Brave New World',
-      poster_path: 'https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg',
-      vote_average: 6.1
-    },
-    {
-      id: 112,
-      title: '3Captain America: Brave New World',
-      poster_path: 'https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg',
-      vote_average: 6.1
-    },
-    {
-      id: 22,
-      title: '4Captain America: Brave New World',
-      poster_path: 'https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg',
-      vote_average: 6.1
-    },
-  ];}
+;}
