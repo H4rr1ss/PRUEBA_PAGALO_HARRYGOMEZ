@@ -8,6 +8,7 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 import { SharedModule } from '../shared/shared.module';
 import { TabButtonComponent } from './components/tab-button/tab-button.component';
 import { ActorCardComponent } from './components/actor-card/actor-card.component';
+import { MoviePopularComponent } from './components/movie-popular/movie-popular.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ActorCardComponent } from './components/actor-card/actor-card.component
     MovieCastComponent,
     MovieCardComponent,
     TabButtonComponent,
-    ActorCardComponent
+    ActorCardComponent,
+    MoviePopularComponent
   ],
   imports: [
     CommonModule,

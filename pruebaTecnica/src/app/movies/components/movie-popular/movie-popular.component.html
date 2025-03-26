@@ -1,0 +1,21 @@
+<header class="w-full h-[671px] relative bg-cover">
+  <div
+  class="absolute inset-0 bg-cover opacity-40 clip-custom"
+  [style.background-image]="'url(https://image.tmdb.org/t/p/original' + movie?.backdrop_path + ')'"
+>
+</div>
+
+
+  <!-- Navigation Bar -->
+  <app-navbar></app-navbar>
+
+  <!-- Hero Content -->
+  <div class="px-[122px] pt-[177px] relative z-10">
+    <h1 class="text-h1-bold font-bold text-white">
+      {{movie?.title}}
+    </h1>
+    <p class="w-[474px] mt-[39px] text-h6-medium font-medium text-white">
+      {{movie?.overview}}
+    </p>
+  </div>
+</header>
