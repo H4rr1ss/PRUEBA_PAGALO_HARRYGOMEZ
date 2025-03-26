@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+interface Movie {
+  id: number;
+  title: string;
+  image: string;
+  rating: number;
+  description?: string;
+}
 
 @Component({
   selector: 'app-movie-detail',
@@ -6,11 +14,63 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class MovieDetailComponent implements OnInit {
+export class MovieDetailComponent {
 
-  constructor() { }
+  movieData:Movie = {
+    id: 1112,
+    title: 'Snow White',
+    image: '',
+    rating: 5.0,
+    description:
+      "Princess Snow White flees the castle when the Evil Queen, in her jealousy over Snow White's inner beauty, tries to kill her. Deep into the dark woods, she stumbles upon seven magical dwarves and a young thief named Jonathan. Together, they strive to survive the Queen's relentless pursuit and aspire to take back the kingdom in the process...",
+  };
 
-  ngOnInit(): void {
-  }
+  actors = [
+    {
+      name: 'Rachel Zegler',
+      role: 'Snow White',
+      image: 'https://image.tmdb.org/t/p/w300/2v9FVVBUrrkW2m3QOcYkuhq9A6o.jpg'
+    },
+    {
+      name: 'Rachel Zegler',
+      role: 'Snow White',
+      image: 'https://image.tmdb.org/t/p/w300/2v9FVVBUrrkW2m3QOcYkuhq9A6o.jpg'
+    },
+    {
+      name: 'Rachel Zegler',
+      role: 'Snow White',
+      image: 'https://image.tmdb.org/t/p/w300/2v9FVVBUrrkW2m3QOcYkuhq9A6o.jpg'
+    },
+    {
+      name: 'Rachel Zegler',
+      role: 'Snow White',
+      image: 'https://image.tmdb.org/t/p/w300/2v9FVVBUrrkW2m3QOcYkuhq9A6o.jpg'
+    },
+  ];
 
-}
+  relatedMovies = [
+    {
+      id: 22,
+      title: '1Captain America: Brave New World',
+      image: 'https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg',
+      rating: 6.1
+    },
+    {
+      id: 99,
+      title: '2Captain America: Brave New World',
+      image: 'https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg',
+      rating: 6.1
+    },
+    {
+      id: 112,
+      title: '3Captain America: Brave New World',
+      image: 'https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg',
+      rating: 6.1
+    },
+    {
+      id: 22,
+      title: '4Captain America: Brave New World',
+      image: 'https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg',
+      rating: 6.1
+    },
+  ];}

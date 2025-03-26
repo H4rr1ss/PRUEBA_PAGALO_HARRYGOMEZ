@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { SharedModule } from '../shared/shared.module';
 import { TabButtonComponent } from './components/tab-button/tab-button.component';
+import { ActorCardComponent } from './components/actor-card/actor-card.component';
 @NgModule({
   declarations: [
     PopularComponent,
@@ -15,7 +16,8 @@ import { TabButtonComponent } from './components/tab-button/tab-button.component
     NowPlayingComponent,
     MovieCastComponent,
     MovieCardComponent,
-    TabButtonComponent
+    TabButtonComponent,
+    ActorCardComponent
   ],
   imports: [
     CommonModule,

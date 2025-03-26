@@ -1,1 +1,69 @@
-<p>movie-detail works!</p>
+<div class="bg-primary-400 flex flex-col items-center w-full">
+  <div class="w-full max-w-[1440px]">
+    <!-- Navigation Bar -->
+    <app-navbar></app-navbar>
+
+    <!-- Main content -->
+    <main class="px-[122px] pt-[131px]">
+      <!-- Movie content section -->
+      <div class="flex gap-20 h-[654px]">
+
+        <!-- Movie poster -->
+        <div class="w-full h-full flex flex-col justify-center">
+
+          <div class="h-[553px] bg-[url(https://image.tmdb.org/t/p/w300/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg)] bg-cover bg-center rounded-sm"></div>
+
+          <!-- Rating section -->
+          <div class="flex gap-5 mt-4 items-center justify-center">
+            <span class="text-white text-h6-medium">PUNTUAR</span>
+            <div class="flex gap-1">
+              <img *ngFor="let star of [1, 2, 3, 4, 5]" class="w-[21px] h-[21px]" alt="Star" src="/assets/movie-card/StarGray.svg">
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie details -->
+        <div class="flex flex-col gap-8 items-center">
+          <div class="flex flex-row justify-between w-full">
+            <h1 class="text-white font-bold text-h1-bold">{{ movieData.title }}</h1>
+            <div class="flex items-center gap-2">
+              <span class="text-white text-h1-s-regular">{{ movieData.rating }}</span>
+              <img class="w-10 h-[43px]" alt="Star" src="/assets/movie-card/StarYellow.svg">
+            </div>
+          </div>
+
+          <!-- Description -->
+          <p class="text-white text-h6-regular max-w-[685px]">{{ movieData.description }}</p>
+
+          <!-- Actors section -->
+          <div>
+            <h2 class="text-white text-h6-regular mb-4">Actores</h2>
+            <div class="flex justify-between gap-5">
+              <div *ngFor="let actor of actors" class="w-[155px]">
+                <app-actor-card
+                  [actor]="actor">
+                </app-actor-card>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cast and production team button -->
+          <button
+            class="w-fit h-8 px-5 py-0 rounded-[10px] border border-secundary-200 text-secundary-200 text-sm hover:border-secundary-400 hover:text-secundary-400"
+          >
+            Reparto y equipo de producción
+          </button>
+        </div>
+      </div>
+
+      <!-- Related movies section -->
+      <div class="my-10">
+        <h2 class="text-white text-h6-regular mb-4">Películas relacionadas</h2>
+        <div class="grid grid-cols-4 gap-x-[69px] gap-y-[35px]">
+          <app-movie-card *ngFor="let movie of relatedMovies" [movie]="movie">
+          </app-movie-card>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

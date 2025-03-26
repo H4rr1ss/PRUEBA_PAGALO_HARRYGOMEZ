@@ -5,7 +5,7 @@ interface Movie {
   title: string;
   image: string;
   rating: number;
-  isFirstCard: boolean;
+  description?: string;
 }
 
 @Component({
