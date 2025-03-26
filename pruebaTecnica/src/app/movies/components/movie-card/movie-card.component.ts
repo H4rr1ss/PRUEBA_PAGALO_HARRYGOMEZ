@@ -14,4 +14,8 @@ export class MovieCardComponent{
   get roundedRating(): number {
     return Math.round(this.movie.vote_average / 2);
   }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

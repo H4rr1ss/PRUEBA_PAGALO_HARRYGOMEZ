@@ -40,6 +40,7 @@ export class MoviesService {
           title: movie.title,
           poster_path: movie.poster_path ? `${environment.sizePoster}${movie.poster_path}` : '',
           vote_average: movie.vote_average,
+          release_date: movie.release_date,
         }));
       })
     );
@@ -59,6 +60,7 @@ export class MoviesService {
           title: movie.title,
           poster_path: movie.poster_path ? `${environment.sizePoster}${movie.poster_path}` : '',
           vote_average: movie.vote_average,
+          release_date: movie.release_date,
         }));
       })
     );
@@ -78,6 +80,24 @@ export class MoviesService {
         title: movie.title,
         poster_path: movie.poster_path ? `${environment.sizePoster}${movie.poster_path}` : '',
         vote_average: movie.vote_average
+      })))
+    );
+  }
+
+  searchMovies(query: string): Observable<Movie[]> {
+    const url = `${this.apiUrl}/search/movie`;
+    const params = {
+      language: 'es-ES',
+      query: query,
+      page: '1'
+    };
+
+    return this.http.get<{ results: Movie[] }>(url, { params }).pipe(
+      map(response => response.results.map(movie => ({
+        id: movie.id,
+        title: movie.title,
+        poster_path: movie.poster_path ? `${environment.sizePoster}${movie.poster_path}` : '',
+        vote_average: movie.vote_average,
       })))
     );
   }

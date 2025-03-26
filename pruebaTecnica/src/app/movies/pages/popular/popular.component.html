@@ -33,13 +33,14 @@
           <div class="relative flex-1 sm:flex-none">
             <input
               [(ngModel)]="searchQuery"
+              (ngModelChange)="searchMovies()"
               class="w-full sm:w-[300px] lg:w-[363px] h-[43px] bg-primary-300 rounded-[5px] text-primary-50 text-paragraph-medium font-medium pl-[19px] pr-[45px] outline-none"
-              placeholder="Buscar por nombre de pelicula"
+              placeholder="Buscar por nombre de película"
             />
             <img src="/assets/popular/Search.svg" class="w-7 h-7 absolute top-2 right-3 cursor-pointer" alt="Search" />
           </div>
 
-          <app-filter></app-filter>
+          <app-filter (dateRangeSelected)="onDateRangeSelected($event)"></app-filter>
         </div>
       </div>
     </section>
@@ -49,7 +50,7 @@
     <section class="px-4 md:px-8 lg:px-[122px] pt-[60px] pb-[60px] lg:pb-[122px] min-h-screen">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-x-[69px] lg:gap-y-[35px]">
         <app-movie-card
-          *ngFor="let movie of movies"
+          *ngFor="let movie of filteredMovies"
           [movie]="movie"
         >
         </app-movie-card>

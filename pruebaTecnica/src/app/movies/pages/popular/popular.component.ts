@@ -24,7 +24,10 @@ import { Movie } from 'src/app/core/models/movie.interface';
 export class PopularComponent implements OnInit {
   selectedTab = 'cartelera';
   searchQuery = '';
+  startDate: string = '';
+  endDate: string = '';
   movies: Movie[] = [];
+  filteredMovies: Movie[] = [];
   currentPage: number = 1;
   isLoading: boolean = false;
 
@@ -42,6 +45,7 @@ export class PopularComponent implements OnInit {
       this.apiMovies.getMovies(this.currentPage).subscribe(
         (response: Movie[]) => {
           this.movies = [...this.movies, ...response];
+          this.filteredMovies = [...this.movies];
           this.currentPage++;
           this.isLoading = false;
         },
@@ -54,6 +58,7 @@ export class PopularComponent implements OnInit {
       this.apiMovies.getTopRatedMovies(this.currentPage).subscribe(
         (response: Movie[]) => {
           this.movies = [...this.movies, ...response];
+          this.filteredMovies = [...this.movies];
           this.currentPage++;
           this.isLoading = false;
         },
@@ -65,8 +70,56 @@ export class PopularComponent implements OnInit {
     }
   }
 
+  searchMovies(): void {
+    if (this.searchQuery.trim() === '') {
+      // Si la búsqueda está vacía, recargar la lista original
+      this.currentPage = 1;
+      this.movies = [];
+      this.loadMovies();
+      return;
+    }
+
+    this.isLoading = true;
+    this.apiMovies.searchMovies(this.searchQuery).subscribe({
+      next: (response: Movie[]) => {
+        this.movies = response;
+        this.filteredMovies = response;
+        this.isLoading = false;
+      },
+      error: (err:any) => {
+        console.error('Error al buscar películas:', err);
+        this.isLoading = false;
+      }
+    });
+  }
+
+  onDateRangeSelected(dateRange: { startDate: string; endDate: string }): void {
+    this.startDate = dateRange.startDate;
+    this.endDate = dateRange.endDate;
+
+    this.filterMoviesByDate();
+  }
+
+  filterMoviesByDate(): void {
+    if (!this.startDate || !this.endDate) {
+      this.filteredMovies = [...this.movies];
+      return;
+    }
+
+    const start = new Date(this.startDate);
+    const end = new Date(this.endDate);
+
+    this.filteredMovies = this.movies.filter(movie => {
+      if (!movie.release_date) return false;
+      const releaseDate = new Date(movie.release_date);
+      return releaseDate >= start && releaseDate <= end;
+    });
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
+    if (this.searchQuery.trim()) return;
+
     const scrollPosition = window.scrollY + window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
     if (scrollPosition >= documentHeight - 10) {
@@ -77,6 +130,7 @@ export class PopularComponent implements OnInit {
   setTab(tab: string): void {
     this.selectedTab = tab;
     this.movies = [];
+    this.filteredMovies = [];
     this.currentPage = 1;
     this.loadMovies();
   }
