@@ -34,18 +34,14 @@ export class PopularComponent implements OnInit {
     this.loadMovies();
   }
 
-  loadMovie() {
-
-  }
-
   loadMovies(): void {
-    if (this.isLoading) return; // Evita llamadas múltiples
+    if (this.isLoading) return;
     this.isLoading = true;
 
     if (this.selectedTab === 'cartelera') {
       this.apiMovies.getMovies(this.currentPage).subscribe(
         (response: Movie[]) => {
-          this.movies = [...this.movies, ...response]; // Agrega las nuevas películas a la lista existente
+          this.movies = [...this.movies, ...response];
           this.currentPage++;
           this.isLoading = false;
         },
@@ -57,7 +53,7 @@ export class PopularComponent implements OnInit {
     } else if (this.selectedTab === 'populares') {
       this.apiMovies.getTopRatedMovies(this.currentPage).subscribe(
         (response: Movie[]) => {
-          this.movies = [...this.movies, ...response]; // Agrega las nuevas películas a la lista existente
+          this.movies = [...this.movies, ...response];
           this.currentPage++;
           this.isLoading = false;
         },
