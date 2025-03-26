@@ -10,6 +10,7 @@ import { TabButtonComponent } from './components/tab-button/tab-button.component
 import { ActorCardComponent } from './components/actor-card/actor-card.component';
 import { MoviePopularComponent } from './components/movie-popular/movie-popular.component';
 import { RouterLink } from '@angular/router';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RouterLink } from '@angular/router';
     MovieCardComponent,
     TabButtonComponent,
     ActorCardComponent,
-    MoviePopularComponent
+    MoviePopularComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,

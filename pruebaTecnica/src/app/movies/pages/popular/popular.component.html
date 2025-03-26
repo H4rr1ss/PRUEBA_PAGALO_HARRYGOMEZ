@@ -4,45 +4,50 @@
     <app-movie-popular></app-movie-popular>
 
     <!-- Movie Tabs and Search Section -->
-    <section class="px-[122px] pt-[32px] relative">
-      <div class="flex items-center justify-between">
-        <div class="flex space-x-[62px]">
-          <app-tab-button
-            *ngFor="let tabName of ['cartelera', 'populares']"
-            [tabName]="tabName"
-            [selectedTab]="selectedTab"
-            (tabSelected)="setTab($event)"
-          ></app-tab-button>
+    <section class="px-4 md:px-8 lg:px-[122px] pt-[32px] relative">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+        <!-- Contenedor de Tabs y Active Tab Indicator -->
+        <div class="flex flex-col w-full">
+          <!-- Tabs -->
+          <div class="flex space-x-4 md:space-x-[62px]">
+            <app-tab-button
+              *ngFor="let tabName of ['cartelera', 'populares']"
+              [tabName]="tabName"
+              [selectedTab]="selectedTab"
+              (tabSelected)="setTab($event)"
+            ></app-tab-button>
+          </div>
+
+          <!-- Active Tab Indicator (Ahora dentro del mismo contenedor) -->
+          <div
+            class="w-[100px] h-[5px] bg-primary-50 transition-all duration-300 mt-2 md:mt-[30px]"
+            [ngClass]="{
+              'ml-0': selectedTab === 'cartelera',
+              'ml-[120px] md:ml-[164px]': selectedTab === 'populares'
+            }">
+          </div>
         </div>
 
-        <div class="flex gap-2">
-          <div class="relative">
+        <!-- Search and Filter -->
+        <div class="flex flex-col sm:flex-row gap-2">
+          <div class="relative flex-1 sm:flex-none">
             <input
               [(ngModel)]="searchQuery"
-              class="w-[363px] h-[43px] bg-primary-300 rounded-[5px] text-primary-50 text-paragraph-medium font-medium pl-[19px] pr-[45px] outline-none"
+              class="w-full sm:w-[300px] lg:w-[363px] h-[43px] bg-primary-300 rounded-[5px] text-primary-50 text-paragraph-medium font-medium pl-[19px] pr-[45px] outline-none"
               placeholder="Buscar por nombre de pelicula"
             />
             <img src="/assets/popular/Search.svg" class="w-7 h-7 absolute top-2 right-3 cursor-pointer" alt="Search" />
           </div>
 
-          <button class="w-[108px] h-[42px] bg-secundary-400 rounded-[2.5px] flex items-center justify-center gap-2">
-            <img src="/assets/popular/Filter.svg" class="w-6 h-6" alt="Filter" />
-            <span class="text-paragraph-medium font-medium text-secundary-50">
-              Filtrar
-            </span>
-          </button>
+          <app-filter></app-filter>
         </div>
-      </div>
-
-      <!-- Active Tab Indicator -->
-      <div
-        class="w-[100px] h-[5px] mt-[30px] bg-primary-50 ml-2"
-        [style.marginLeft]="selectedTab === 'cartelera' ? '0' : '162px'">
       </div>
     </section>
 
-    <section class="px-[122px] pt-[60px] pb-[122px] min-h-screen">
-      <div class="grid grid-cols-4 gap-x-[69px] gap-y-[35px]">
+
+    <!-- Movie Grid Section -->
+    <section class="px-4 md:px-8 lg:px-[122px] pt-[60px] pb-[60px] lg:pb-[122px] min-h-screen">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-x-[69px] lg:gap-y-[35px]">
         <app-movie-card
           *ngFor="let movie of movies"
           [movie]="movie"
@@ -50,7 +55,7 @@
         </app-movie-card>
       </div>
 
-      <!-- Loader de paginación, muestra cuando isLoading es true -->
+      <!-- Loader -->
       <div *ngIf="isLoading" class="flex justify-center py-5">
         <span class="loader"></span>
       </div>

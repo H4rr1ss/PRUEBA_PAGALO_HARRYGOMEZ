@@ -1,6 +1,9 @@
 <div class="bg-primary-400 w-full h-screen flex items-center justify-center">
-  <nav class="absolute top-0 left-0 w-full h-[85px] flex items-center justify-between px-[52px] py-[11px]">
-    <div class="relative w-[208px] h-[30px] bg-[url('/assets/logo.svg')] bg-contain bg-no-repeat"></div>
+  <nav class="absolute top-0 left-0 w-full h-[85px] flex items-center justify-between px-[52px] py-[11px] cursor-pointer">
+    <div
+      class="relative w-[208px] h-[30px] bg-[url('/assets/logo.svg')] bg-contain bg-no-repeat"
+      [routerLink]="'/peliculas'"
+    ></div>
   </nav>
 
   <div class="relative w-[470px] bg-primary-200 rounded-2xl shadow-lg border-none py-4">

@@ -1,20 +1,19 @@
-<header class="w-full h-[671px] relative bg-cover">
+<header class="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[671px] relative bg-cover">
   <div
-  class="absolute inset-0 bg-cover opacity-40 clip-custom"
-  [style.background-image]="'url(https://image.tmdb.org/t/p/original' + movie?.backdrop_path + ')'"
->
-</div>
-
+    class="absolute inset-0 bg-cover opacity-40 clip-custom"
+    [style.background-image]="'url(https://image.tmdb.org/t/p/original' + movie?.backdrop_path + ')'"
+  >
+  </div>
 
   <!-- Navigation Bar -->
   <app-navbar></app-navbar>
 
   <!-- Hero Content -->
-  <div class="px-[122px] pt-[177px] relative z-10">
-    <h1 class="text-h1-bold font-bold text-white">
+  <div class="px-4 sm:px-8 md:px-16 lg:px-[122px] pt-[80px] sm:pt-[120px] md:pt-[150px] lg:pt-[177px] relative z-10">
+    <h1 class="text-h2-bold sm:text-h1-bold font-bold text-white">
       {{movie?.title}}
     </h1>
-    <p class="w-[474px] mt-[39px] text-h6-medium font-medium text-white">
+    <p class="w-full sm:w-[400px] md:w-[450px] lg:w-[474px] mt-4 sm:mt-6 md:mt-8 lg:mt-[39px] text-paragraph-medium sm:text-h6-medium font-medium text-white line-clamp-4 sm:line-clamp-none">
       {{movie?.overview}}
     </p>
   </div>

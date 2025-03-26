@@ -1,0 +1,20 @@
+<div class="relative z-10">
+  <button
+    (click)="toggleDateInputs()"
+    class="w-full sm:w-[108px] h-[42px] bg-secundary-400 rounded-[2.5px] flex items-center justify-center gap-2">
+    <img src="/assets/popular/Filter.svg" class="w-6 h-6" alt="Filter" />
+    <span class="text-paragraph-medium font-medium text-secundary-50">
+      Filtrar
+    </span>
+  </button>
+
+  <div *ngIf="showDateInputs" class="absolute right-0 mt-2 p-4 bg-primary-300 shadow-lg rounded-md flex flex-col gap-2 w-full sm:w-[250px]">
+    <label class="text-white">Fecha inicio:</label>
+    <input type="date" [(ngModel)]="startDate" class="w-full border p-2 rounded-md">
+
+    <label class="text-white">Fecha fin:</label>
+    <input type="date" [(ngModel)]="endDate" class="w-full border p-2 rounded-md">
+
+    <button (click)="search()" class="mt-2 bg-secundary-400 text-secundary-50 p-2 rounded-md w-full">Buscar</button>
+  </div>
+</div>
