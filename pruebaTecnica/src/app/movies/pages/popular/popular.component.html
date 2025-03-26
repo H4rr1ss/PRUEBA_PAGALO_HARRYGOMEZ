@@ -25,15 +25,11 @@
       <div class="flex items-center justify-between">
         <div class="flex space-x-[62px]">
           <app-tab-button
-            tabName="cartelera"
+            *ngFor="let tabName of ['cartelera', 'populares']"
+            [tabName]="tabName"
             [selectedTab]="selectedTab"
-            (tabSelected)="setTab($event)">
-          </app-tab-button>
-          <app-tab-button
-            tabName="populares"
-            [selectedTab]="selectedTab"
-            (tabSelected)="setTab($event)">
-          </app-tab-button>
+            (tabSelected)="setTab($event)"
+          ></app-tab-button>
         </div>
 
         <div class="flex gap-2">
@@ -62,17 +58,15 @@
       </div>
     </section>
 
-    <!-- Si selectedTab es 'cartelera', muestra las películas en cartelera -->
-    <section *ngIf="selectedTab === 'cartelera'" class="px-[122px] pt-[60px] pb-[122px]">
+    <section class="px-[122px] pt-[60px] pb-[122px] min-h-screen">
+
       <div class="grid grid-cols-4 gap-x-[69px] gap-y-[35px]">
         <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
       </div>
-    </section>
 
-    <!-- Si selectedTab NO es 'cartelera', muestra las películas populares -->
-    <section *ngIf="selectedTab !== 'cartelera'" class="px-[122px] pt-[60px] pb-[122px]">
-      <div class="grid grid-cols-4 gap-x-[69px] gap-y-[35px]">
-        <app-movie-card *ngFor="let movie of movies_popular" [movie]="movie"></app-movie-card>
+      <!-- Loader de paginación, muestra cuando isLoading es true -->
+      <div *ngIf="isLoading" class="flex justify-center py-5">
+        <span class="loader"></span> <!-- Asegúrate de tener un componente o estilo de loader -->
       </div>
     </section>
   </div>
