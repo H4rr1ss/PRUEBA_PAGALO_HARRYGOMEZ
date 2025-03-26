@@ -1,10 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Actor } from 'src/app/core/models/author.interface';
 
-export interface Actor {
-  image: string;
-  name: string;
-  role: string;
-}
 
 @Component({
   selector: 'app-actor-card',
@@ -13,6 +9,5 @@ export interface Actor {
   ]
 })
 export class ActorCardComponent  {
-  @Input() actor: Actor = { image: '', name: '', role: '' };
-
+  @Input() actor!: Actor;
 }

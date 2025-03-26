@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesService } from './movies/services/movies.service';
+import { AuthorService } from './movies/services/author.service';
 import { InterceptorInterceptor } from './core/interceptors/interceptor.interceptor';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { InterceptorInterceptor } from './core/interceptors/interceptor.intercep
   ],
   providers: [
     MoviesService,
+    AuthorService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorInterceptor,
