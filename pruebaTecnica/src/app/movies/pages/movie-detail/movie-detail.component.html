@@ -62,7 +62,10 @@
           </div>
 
           <!-- Cast and production team button -->
-          <button class="w-fit h-8 px-3 sm:px-4 md:px-5 py-0 rounded-[10px] border border-secundary-200 text-secundary-200 text-paragraph-s-regular sm:text-sm hover:border-secundary-400 hover:text-secundary-400 transition-colors duration-200">
+          <button
+            class="w-fit h-8 px-3 sm:px-4 md:px-5 py-0 rounded-[10px] border border-secundary-200 text-secundary-200 text-paragraph-s-regular sm:text-sm hover:border-secundary-400 hover:text-secundary-400 transition-colors duration-200"
+            [routerLink]="['/pelicula', movie?.id, movie?.title, 'elenco']"
+          >
             Reparto y equipo de producción
           </button>
         </div>

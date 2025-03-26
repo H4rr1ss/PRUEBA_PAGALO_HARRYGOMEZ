@@ -1,1 +1,36 @@
-<p>movie-cast works!</p>
+<main class="bg-primary-400 flex flex-row justify-center w-full">
+  <div class="bg-primary-400 w-full max-w-[1440px] relative">
+    <!-- Header with logo and login button -->
+    <app-navbar>
+    </app-navbar>
+
+    <!-- Movie title banner -->
+    <section class="w-full h-[180px] sm:h-[200px] md:h-[230px] bg-primary-200 relative">
+      <h1 class="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-full text-xl sm:text-2xl md:text-h2-bold font-bold text-white text-center px-4">
+        {{movieName}}
+      </h1>
+    </section>
+
+    <!-- Cast section -->
+    <section class="mt-8 sm:mt-12 md:mt-[72px] px-4 sm:px-8 md:px-[122px]">
+      <h2 class="text-h5-regular font-regular text-white mb-4">Reparto</h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-x-[69px] md:gap-y-[35px]">
+        <div *ngFor="let member of actors.actors" class="w-full sm:w-[155px]">
+          <app-actor-card [actor]="member"></app-actor-card>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team section -->
+    <section class="mt-8 sm:mt-12 md:mt-[81px] px-4 sm:px-8 md:px-[122px] pb-8 sm:pb-[39px]">
+      <h2 class="text-h5-regular font-regular text-white mb-4">Equipo</h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-x-[69px] md:gap-y-[35px]">
+        <div *ngFor="let member of actors.crew" class="w-full sm:w-[155px]">
+          <app-actor-card [actor]="member"></app-actor-card>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
