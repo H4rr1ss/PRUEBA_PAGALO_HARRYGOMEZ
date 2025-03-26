@@ -50,7 +50,7 @@
 
           <!-- Description -->
           <p class="text-white text-paragraph-s-regular sm:text-paragraph-regular max-w-[685px]">
-            {{ movie?.overview }}
+            {{ movie?.overview ? movie?.overview : 'Película sin descripción' }}
           </p>
 
           <!-- Actors section -->
@@ -80,13 +80,16 @@
         <h2 class="text-white text-paragraph-medium sm:text-h6-s-regular md:text-h6-regular mb-3 sm:mb-4">
           Películas relacionadas
         </h2>
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-x-[69px] md:gap-y-[35px]">
+        <div *ngIf="recommendedMovies.length > 0; else noMovies"
+          class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-x-[69px] md:gap-y-[35px]">
           <app-movie-card
             *ngFor="let movie of recommendedMovies"
-            [movie]="movie"
-          >
+            [movie]="movie">
           </app-movie-card>
         </div>
       </div>
     </main>
 </div>
+<ng-template #noMovies>
+  <p class="text-center text-gray-400 text-lg mt-4">Sin películas relacionadas</p>
+</ng-template>
