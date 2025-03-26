@@ -1,9 +1,58 @@
-<nav class="absolute top-0 left-0 w-full h-[85px] flex items-center justify-between px-[52px] py-[11px] z-20">
+<nav
+  class="absolute top-0 left-0 w-full h-[85px] flex items-center justify-between px-4 sm:px-10 lg:px-[52px] py-2 z-20 bg-black/50 backdrop-blur-md sm:backdrop-blur-none sm:bg-transparent"
+>
+  <!-- Logo -->
   <a [routerLink]="'/peliculas'">
-    <div class="relative w-[208px] h-[30px] bg-[url('/assets/logo.svg')] bg-contain bg-no-repeat cursor-pointer"></div>
+    <div class="relative w-[150px] sm:w-[180px] lg:w-[208px] h-[25px] sm:h-[28px] lg:h-[30px] bg-[url('/assets/logo.svg')] bg-contain bg-no-repeat cursor-pointer"></div>
   </a>
 
-  <button class="h-8 px-5 py-0 bg-secundary-200 rounded-[10px] hover:bg-secundary-400 text-white text-sm font-medium">
-    Iniciar sesión
+  <!-- Menú hamburguesa (visible en móviles) -->
+  <button class="sm:hidden flex items-center justify-center w-10 h-10 text-white" (click)="toggleMobileMenu()">
+    <img src="/assets/icons/Menu.svg" alt="Menú" class="w-6 h-6">
   </button>
+
+  <!-- Menú lateral en móviles -->
+  <div *ngIf="mobileMenuOpen" class="fixed inset-0 bg-black bg-opacity-75 z-30 flex justify-end">
+    <div class="w-64 h-full bg-gray-900 shadow-lg p-4">
+      <button class="text-white text-xl mb-4" (click)="toggleMobileMenu()">✕</button>
+
+      <!-- Opción directa de cerrar sesión en móviles si está logueado -->
+      <button
+        *ngIf="isLoggedIn"
+        class="block w-full text-left px-4 py-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700"
+        (click)="logout()"
+      >
+        Cerrar sesión
+      </button>
+
+      <!-- Opción de iniciar sesión en móviles si no está logueado -->
+      <button
+        *ngIf="!isLoggedIn"
+        class="block w-full text-left px-4 py-2 text-white bg-secundary-200 rounded-lg hover:bg-secundary-400"
+        (click)="login()"
+      >
+        Iniciar sesión
+      </button>
+    </div>
+  </div>
+
+  <!-- Botón de sesión en pantallas grandes -->
+  <div class="relative hidden sm:flex">
+    <button
+      class="h-8 px-4 sm:px-5 py-0 bg-secundary-200 rounded-lg hover:bg-secundary-400 text-white text-sm font-medium flex items-center justify-center"
+      (click)="toggleMenu()"
+    >
+      {{ isLoggedIn ? 'Mi cuenta' : 'Iniciar sesión' }}
+    </button>
+
+    <!-- Menú desplegable en pantallas grandes -->
+    <div *ngIf="isLoggedIn && showMenu" class="absolute top-10 right-0 w-40 bg-black rounded-lg shadow-lg">
+      <button
+        class="w-full text-left px-4 py-2 text-white hover:bg-gray-800 rounded"
+        (click)="logout()"
+      >
+        Cerrar sesión
+      </button>
+    </div>
+  </div>
 </nav>
